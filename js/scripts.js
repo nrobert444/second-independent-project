@@ -1,5 +1,5 @@
 $(document).ready( function (){
-});
+
 
 var selectedLogo;
 var selectedGenre;
@@ -81,3 +81,24 @@ $('.logo-select').click(function() {
     ruby += 1;
   } else {
   }
+
+  if (python > javascript && python > ruby) {
+    recommendedLanguage = 'Python.';
+    bgColor = '#75a8d3';
+    allowSubmit = true;
+    console.log('python wins with ' + python + ' points.')
+  } else if (javascript > python && javascript > ruby) {
+    recommendedLanguage = 'Javascript.';
+    bgColor = '#f8d410';
+    allowSubmit = true;
+    console.log('javascript wins with ' + javascript + ' points.')
+  } else if (ruby > python && ruby > javascript) {
+    recommendedLanguage = 'Ruby.';
+    bgColor = '#CC342D';
+    allowSubmit = true;
+    console.log('ruby wins with ' + ruby + ' points.')    
+  } else {
+    allowSubmit = false;
+    alert('A recommended language could not be determined from choices.')
+  }
+});
