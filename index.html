@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/bootstrap.css" type="text.css">
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/scripts.js"></script>
@@ -129,7 +129,14 @@
     <div class="row main submit-row">
         <button type="button" id="submit" class="submit btn btn-success">Submit</button>
       </div>
-
+      <div class="row" id="result">
+        <div class="result-container">
+          <div class="content">
+            <span>Your recommended first programming language is </span>
+            <span id="recommended-language"></span>
+            <button type="button" id="close" class="close" aria-label="Close">
+              <span aria-hidden="true">dismiss</span>
+            </button>        
         </div> 
       </div>            
     </div>                
