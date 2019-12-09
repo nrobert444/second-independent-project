@@ -1,4 +1,4 @@
-$(document).ready( function (){
+$(document).ready( function (event){
 
 
 var selectedLogo;
@@ -7,7 +7,7 @@ var selectedHoliday;
 var selectedDrink;
 var selectedMovie;
 var selectedFlavor;
-
+var bgColor = 'white';
 
 $('.logo-select').click(function() {
     selectedLogo = this.value;
@@ -28,6 +28,13 @@ $('.logo-select').click(function() {
     selectedDrink = this.value;
   });
 
+  function getResults () {
+    var python = 0;
+    var javascript = 0;
+    var ruby = 0;
+    var recommendedLanguage;
+    var allowSubmit = false;
+
   if (selectedLogo === 'snake') {
     python += 1;
   } else if (selectedLogo === 'letters') {
@@ -35,7 +42,7 @@ $('.logo-select').click(function() {
   } else if (selectedLogo === 'gem') {
     ruby += 1;
   } else {
-  }
+  };
   
   if (selectedGenre === 'horror') {
     python += 1;
@@ -44,7 +51,7 @@ $('.logo-select').click(function() {
   } else if (selectedGenre === 'drama') {
     ruby += 1;
   } else {
-  }
+  };
   
   if (selectedHoliday === 'halloween') {
     python += 1;
@@ -53,7 +60,7 @@ $('.logo-select').click(function() {
   } else if (selectedHoliday === 'christmas') {
     ruby += 1;
   } else {
-  }
+  };
   
   if (selectedFlavor === 'vanilla') {
     python += 1;
@@ -62,7 +69,7 @@ $('.logo-select').click(function() {
   } else if (selectedFlavor === 'chocolate') {
     ruby += 1;
   } else {
-  }
+  };
   
   if (selectedMovie === 'jaws') {
     python += 1;
@@ -71,7 +78,7 @@ $('.logo-select').click(function() {
   } else if (selectedMovie === 'shindlersList') {
     ruby += 1;
   } else {
-  }
+  }; 
   
   if (selectedDrink === 'beer') {
     python += 1;
@@ -80,25 +87,39 @@ $('.logo-select').click(function() {
   } else if (selectedDrink === 'water') {
     ruby += 1;
   } else {
-  }
+  };
 
   if (python > javascript && python > ruby) {
     recommendedLanguage = 'Python.';
     bgColor = '#75a8d3';
     allowSubmit = true;
-    console.log('python wins with ' + python + ' points.')
   } else if (javascript > python && javascript > ruby) {
     recommendedLanguage = 'Javascript.';
     bgColor = '#f8d410';
     allowSubmit = true;
-    console.log('javascript wins with ' + javascript + ' points.')
   } else if (ruby > python && ruby > javascript) {
     recommendedLanguage = 'Ruby.';
     bgColor = '#CC342D';
     allowSubmit = true;
-    console.log('ruby wins with ' + ruby + ' points.')    
   } else {
     allowSubmit = false;
     alert('A recommended language could not be determined from choices.')
-  }
+  };
+
+  $('#recommended-language').text(recommendedLanguage);
+  if (allowSubmit) {
+    $('#result' ).css( 'background-color', bgColor);    
+    $('.main').fadeOut(1000, function() {
+      $('#result').slideDown();
+    });    
+   }
+  };
+  $('#submit').click(function() {
+    getResults();
+  });
+  $('#close').click(function() {
+    $('#result').fadeOut(1000, function() {
+      $('.main').slideDown();
+    });
+  });
 });
